@@ -1,29 +1,35 @@
 window.onload = () => {
-    initialize(size)
+    initialize(defaultSize)
 }
 
-let size = 20;
+let defaultSize = 20;
+let color = '#000000'
 
 const divContainer = document.querySelector('.container')
 const scrollbar = document.querySelector('.scroll')
 const textSize = document.querySelector('.textSize')
+const clearBtn = document.querySelector('.clearBtn')
+const colorPicker = document.querySelector('.colorPicker')
 
 
 scrollbar.onmousemove = () => changeSizeText(scrollbar.value)
-scrollbar.onchange = (value) => initialize(scrollbar.value)
+scrollbar.onchange = () => initialize(scrollbar.value)
+clearBtn.onclick = () => initialize(scrollbar.value)
+colorPicker.onchange = () => newColor(colorPicker.value)
 
 function changeSize(newValue) {
-  size = newValue
+  defaultSize = newValue
 }
 
+// initializing grid
 function initialize(value) {
   clearGrid()
   changeSize(value)
-  changeSizeText()
-  makeGrid(scrollbar.value)
+  changeSizeText(value)
+  makeGrid(value)
 }
 
-function changeSizeText(){
+function changeSizeText(size){
     textSize.innerHTML = size + ' x ' + size;
 }
 
@@ -34,7 +40,9 @@ function makeGrid(size) {
     for (let i = 0; i < size * size; i++) {
       const element = document.createElement('div');
       element.classList.add('box')
-      element.classList.add('grid')      
+      element.classList.add('grid')   
+      element.addEventListener('mouseover', changeColor)
+      element.addEventListener('click', changeColor)   
       divContainer.appendChild(element);
     }
     
@@ -42,4 +50,19 @@ function makeGrid(size) {
 
 function clearGrid(){
     divContainer.innerHTML = ''
+}
+
+//color changing
+let mouseDown = false;
+document.body.onmousedown = () => {mouseDown = true}
+document.body.onmouseup = () => {mouseDown = false}
+
+function changeColor(e) {
+  if(e.type == 'mouseover' && mouseDown)
+    e.target.style.backgroundColor = color
+  
+}
+
+function newColor(newColor) {
+  color = newColor
 }
