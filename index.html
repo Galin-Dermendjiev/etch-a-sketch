@@ -7,16 +7,26 @@
     <title>Etch-a-sketch</title>
 </head>
 <body>
-    <input class="colorPicker" type="color" value="#000000">
-    <button >color</button>
-    <button class="clearBtn">clear</button>
-
-    <input class="scroll" name="size" type="range" value="20" min="2" max="60">
-    <p class="textSize"></p>
-
-    <div id="container-id" class="container">
+    <header>
+        <h1 class="title">Etch-a-sketch</h1>
+    </header>
+    <main>
+        <div class="properties">
+            <input class="colorPicker" type="color" value="#000000">
+            <button >color</button>
+            <button class="clearBtn">clear</button>
     
-    </div>
+            <p class="textSize"></p>
+            <input class="scroll" name="size" type="range" value="20" min="2" max="60">
+        </div>
+    
+        <div id="container-id" class="container">
+        
+        </div>
+    </main>
+    <footer>
+        <p>Copyright © 2023</p>
+    </footer>
 
     <script src="script.js">
     </script>

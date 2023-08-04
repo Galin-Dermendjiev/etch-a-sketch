@@ -2,14 +2,14 @@ window.onload = () => {
     initialize(defaultSize)
 }
 
-let defaultSize = 20;
-let color = '#000000'
-
 const divContainer = document.querySelector('.container')
 const scrollbar = document.querySelector('.scroll')
 const textSize = document.querySelector('.textSize')
 const clearBtn = document.querySelector('.clearBtn')
 const colorPicker = document.querySelector('.colorPicker')
+
+let defaultSize = scrollbar.value;
+let color = colorPicker.value;
 
 
 scrollbar.onmousemove = () => changeSizeText(scrollbar.value)
@@ -39,7 +39,6 @@ function makeGrid(size) {
     
     for (let i = 0; i < size * size; i++) {
       const element = document.createElement('div');
-      element.classList.add('box')
       element.classList.add('grid')   
       element.addEventListener('mouseover', changeColor)
       element.addEventListener('click', changeColor)   
