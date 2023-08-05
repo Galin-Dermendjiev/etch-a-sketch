@@ -72,6 +72,11 @@ button{
   cursor: pointer;
 }
 
+.active, button:hover{
+  background-color: #E0E1DD;
+  color: #415A77;
+}
+
 .textSize{
   color: #E0E1DD;
   font-size: 2em;
